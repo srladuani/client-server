@@ -1,4 +1,5 @@
 class Api::V1::BaseApiController < ApplicationController
+  protect_from_forgery with: :null_session
   # before action, check if user is authenticated
   before_action :authenticate_request!
   
