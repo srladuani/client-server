@@ -1,15 +1,23 @@
 class Api::V1::TasksController < Api::V1::BaseApiController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-  ###################################
+  #########################################
   ## url: /api/v1/tasks
   ## method: GET
-  ## list all the tasks.
-  ####################################
+  ## Headers: [Authorization: token]
+  ## returns array of tasks in json format
+  ##########################################
   def index
     @tasks = Task.all
   end
 
+  ###########################################
+  ## url: /api/v1/tasks/1
+  ## method: PATCH
+  ## Headers: [Authorization: token]
+  ## returns task object if saved.
+  ## Otherwise, returns errors in json format
+  ############################################
   def update
     if @task.update(task_params)
       render :show, status: :ok, location: @task

@@ -1,7 +1,9 @@
 class Task < ApplicationRecord
-  mount_uploader :path, TaskUploader
-  validates :name,:start_time,:end_time,presence: true
+  # required fields validation
+  validates :name,:start_time,:end_time,:path,presence: true
 
+  # selected days are array of integers
+  # it will retrieve day names of selected days
   def scheduled_days
     day_names = []
     if days.any?

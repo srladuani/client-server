@@ -16,8 +16,8 @@
     = f.label :end_time
     = f.datetime_select :end_time,class: "form-control"
   .form-group
-    = f.label :file
-    = f.file_field :path,class: "form-control"
+    = f.label :file_path
+    = f.text_field :path,class: "form-control"
   .form-group
     .row
       - Date::DAYNAMES.each_with_index do |v,i|

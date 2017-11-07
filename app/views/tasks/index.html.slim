@@ -7,7 +7,7 @@ table
         th Name
         th Start time
         th End time
-        th
+        th Path
         th
         th
 
@@ -17,7 +17,7 @@ table
           td = task.name
           td = task.start_time.strftime("%d/%m/%Y %H:%M")
           td = task.end_time.strftime("%d/%m/%Y %H:%M")
-          td = link_to 'Show', task
+          td = task.path
           td = link_to 'Edit', edit_task_path(task)
           td = link_to 'Destroy', task, data: { confirm: 'Are you sure?' }, method: :delete
   - else
