@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :tasks
 
+  post 'auth_user' => 'authentication#authenticate_user'
   root to: 'visitors#index'
 
   # api routes
