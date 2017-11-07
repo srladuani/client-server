@@ -13,4 +13,12 @@ html
       == render 'layouts/navigation'
     main[role="main"]
       == render 'layouts/messages'
-      == yield
+      #wrapper
+        = render 'layouts/sidebar'
+        #page-content-wrapper
+          .container-fluid        
+            == yield
+
+    
+    = include_rails_script
+

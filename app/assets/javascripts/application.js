@@ -13,4 +13,7 @@
 //= require jquery
 //= require rails-ujs
 //= require bootstrap-sprockets
+//= require jquery.validate
 //= require_tree .
+
+//= require rails_script

@@ -1,0 +1,29 @@
+h1 Listing tasks
+
+table
+  - if @tasks.any?
+    thead
+      tr
+        th Name
+        th Start time
+        th End time
+        th
+        th
+        th
+
+    tbody
+      - @tasks.each do |task|
+        tr
+          td = task.name
+          td = task.start_time.strftime("%d/%m/%Y %H:%M")
+          td = task.end_time.strftime("%d/%m/%Y %H:%M")
+          td = link_to 'Show', task
+          td = link_to 'Edit', edit_task_path(task)
+          td = link_to 'Destroy', task, data: { confirm: 'Are you sure?' }, method: :delete
+  - else
+    tr
+      td No task found.
+
+br
+
+= link_to 'New Task', new_task_path,class: "btn btn-default"

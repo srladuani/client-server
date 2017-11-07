@@ -1,0 +1,28 @@
+= form_for @task,html:{id: "task_form"} do |f|
+  - if @task.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
+      ul
+        - @task.errors.full_messages.each do |message|
+          li = message
+
+  .form-group
+    = f.label :name
+    = f.text_field :name,class: "form-control"
+  .form-group
+    = f.label :start_time
+    = f.datetime_select :start_time,class: "form-control"
+  .form-group
+    = f.label :end_time
+    = f.datetime_select :end_time,class: "form-control"
+  .form-group
+    = f.label :file
+    = f.file_field :path,class: "form-control"
+  .form-group
+    .row
+      - Date::DAYNAMES.each_with_index do |v,i|
+        .col
+          = f.label "#{v}"
+          = check_box_tag "task[#{i}]",i,@task.days.try(:include?,i),class: "days_names"
+      = f.hidden_field :days
+  .actions = f.submit
