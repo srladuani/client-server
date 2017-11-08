@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20171106170026) do
     t.string "path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "days", array: true
     t.boolean "is_executed", default: false
+    t.integer "days", array: true
   end
 
   create_table "users", force: :cascade do |t|
