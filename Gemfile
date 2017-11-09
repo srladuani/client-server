@@ -50,6 +50,3 @@ group :test do
 end
 gem 'rails_script', '~> 2.0'
 gem 'jquery-validation-rails'
-gem 'carrierwave'
-gem "mini_magick"
-
