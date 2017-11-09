@@ -1,4 +1,8 @@
 class Task < ApplicationRecord
+  
+  #associations
+  belongs_to :user
+
   # required fields validation
   validates :name,:start_time,:end_time,:path,presence: true
 

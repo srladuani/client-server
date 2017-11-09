@@ -1,10 +1,11 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks.all
   end
 
   # GET /tasks/1
@@ -14,7 +15,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    @task = Task.new(user: current_user)
   end
 
   # GET /tasks/1/edit
@@ -73,7 +74,7 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :start_time, :end_time, :path,:days)
+      params.require(:task).permit(:name, :start_time, :end_time, :path,:days,:user_id)
     end
 
     def update_days task,days_array

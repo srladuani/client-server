@@ -8,7 +8,7 @@ class Api::V1::TasksController < Api::V1::BaseApiController
   ## returns array of tasks in json format
   ##########################################
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks.all
   end
 
   ###########################################

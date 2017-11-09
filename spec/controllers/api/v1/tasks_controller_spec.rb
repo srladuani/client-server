@@ -20,7 +20,7 @@ describe Api::V1::TasksController , :type => :api do
       # authenticate user
       authenticate_as_a_valid_user
       # creating a task
-      task = FactoryGirl.create(:task)
+      task = FactoryGirl.create(:task,user: @user)
       
       # set token in header
       header 'Authorization',@auth_token
@@ -39,7 +39,6 @@ describe Api::V1::TasksController , :type => :api do
     it 'responds with array of tasks with task name First Task' do
       # first task
       @task =  json[0]
-      puts "name: #{@task['name']}"
       expect(@task['name']).to eq 'First Task'
     end
 
